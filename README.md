@@ -11,9 +11,9 @@ Create a K8S virtual environment with Vagrant and Ansible
   - To connect the the K8S master node - while in the local repo directory run: vagrant ssh master
   - To destroy the environment - while in the local repo directory run: vagrant destroy
   
-### Changing the K8S environment - servers.yml 
+## Advanced Settings - Changing the K8S environment - servers.yml 
   You can change the resulting k8s environment by updating the servers.yml file
-  #### Avilable parameters:
+  ### Avilable parameters:
   - host_name - change the name of a spesific host 
   - ip_address - change the ip address of a spesific host
   - cpus - change the number of CPU cores allocated to a spesific host
