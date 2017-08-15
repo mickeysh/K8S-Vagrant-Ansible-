@@ -7,7 +7,7 @@ Create a K8S virtual environment with Vagrant and Ansible
   
 ## Instructions
   1. Clone the git repo
-  2. While in the local repo directory run: vagrant up 
+  2. While in the local repo directory run: vagrant up
   3. Connect the the K8S master node with: vagrant ssh master
   
 ### Changing the K8S environment - servers.yml 
