@@ -6,9 +6,9 @@ Create a K8S virtual environment with Vagrant and Ansible
   - VirtualBox (https://www.virtualbox.org/wiki/Downloads)
   
 ## Instructions
-  1. Clone the git repo
-  2. While in the local repo directory run: vagrant up
-  3. Connect the the K8S master node with: vagrant ssh master
+  - Clone the git repo
+  - While in the local repo directory run: vagrant up
+  - Connect the the K8S master node with: vagrant ssh master
   
 ### Changing the K8S environment - servers.yml 
   You can change the resulting k8s environment by updating the servers.yml file
