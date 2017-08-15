@@ -13,7 +13,7 @@ Create a K8S virtual environment with Vagrant and Ansible
 ### Changing the K8S environment - servers.yml 
   You can change the resulting k8s environment by updating the servers.yml file
   #### Avilable parameters:
-  host_name - change the name of a spesific host 
-  ip_address - change the ip address of a spesific host
-  cpus - change the number of CPU cores allocated to a spesific host
-  ram - change the amount of allocated RAM to a spesific host
+  - host_name - change the name of a spesific host 
+  - ip_address - change the ip address of a spesific host
+  - cpus - change the number of CPU cores allocated to a spesific host
+  - ram - change the amount of allocated RAM to a spesific host
