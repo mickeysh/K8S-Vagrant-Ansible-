@@ -1,0 +1,62 @@
+---
+- name: Install K8S common services
+  hosts: all
+  tasks:
+    - name: K8S | Install K8S | Add K8S YUM Repo
+      yum_repository:
+        name: Kubernetes
+        description: K8S YUM Repo
+        baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        enabled: yes
+        gpgcheck: yes
+        repo_gpgcheck: yes
+        gpgkey: "https://packages.cloud.google.com/yum/doc/yum-key.gpg\nhttps://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+      become: true
+      become_method: sudo
+
+    - name: K8S | Install K8S | Remove SELINUX Enforcement
+      selinux:
+        policy: targeted
+        state: permissive
+      become: true
+      become_method: sudo
+
+    - name: K8S | Install K8S | Set IPTables 1
+      sysctl:
+        name: net.bridge.bridge-nf-call-iptables
+        value: 1
+        sysctl_set: yes
+        state: present
+        reload: yes
+      become: true
+      become_method: sudo
+
+    - name: K8S | Install K8S | Install K8S Packages
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - kubeadm
+        - kubelet
+      become: true
+      become_method: sudo
+
+    - name: K8S | Install K8S | Copy updated .conf file
+      copy:
+        src: 10-kubeadm.conf
+        dest: /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+        owner: root
+        group: root
+      become: true
+      become_method: sudo
+
+    - name: K8S | Install K8S | Enable K8S service at boot
+      systemd:
+        name: "{{ item }}"
+        enabled: yes
+        state: restarted
+        daemon_reload: yes
+      with_items:
+        - kubelet
+      become: true
+      become_method: sudo

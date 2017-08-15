@@ -1,0 +1,34 @@
+---
+- name: Install docker
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Docker | Install Docker | Install Docker from Yum Repo
+      yum:
+        name: https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-1.12.6-1.el7.centos.x86_64.rpm
+        state: present
+      become: true
+      become_method: sudo
+
+    - name: Docker | Install Docker | Create Docker group
+      group:
+        name: docker
+        state: present
+
+    - name: Docker | Install Docker | Add Docker group to local user
+      user:
+        name: vagrant
+        comment: "add user to docker group"
+        groups: docker
+        append: yes
+      become: true
+      become_method: sudo
+
+    - name: Docker | Install Docker | Enable Docker service at boot
+      systemd:
+        name: docker
+        enabled: yes
+        state: restarted
+      become: true
+      become_method: sudo
