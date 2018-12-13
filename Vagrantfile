@@ -13,8 +13,8 @@ require 'yaml'
 servers = YAML.load_file('servers.yml')
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do | config |
- config.vm.box = "centos/7"
- config.vm.box_url = "http://files.vagrantup.com/centos/7.box"
+ config.vm.box = "ubuntu/xenial64"
+ config.vm.box_version = "20181212.0.0"
 
  servers.each do | servers |
    config.vm.define servers["hostname"] do | srv |

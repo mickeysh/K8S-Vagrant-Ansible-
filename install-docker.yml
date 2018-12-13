@@ -4,9 +4,11 @@
   become: true
 
   tasks:
-    - name: Docker | Install Docker | Install Docker from Yum Repo
-      yum:
-        name: https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-1.12.6-1.el7.centos.x86_64.rpm
+       
+    - name: Docker | Install Docker | Install Docker from Repo
+      apt:
+        name: docker.io
+        update_cache: yes
         state: present
       become: true
       become_method: sudo
@@ -18,7 +20,7 @@
 
     - name: Docker | Install Docker | Add Docker group to local user
       user:
-        name: vagrant
+        name: ubuntu
         comment: "add user to docker group"
         groups: docker
         append: yes

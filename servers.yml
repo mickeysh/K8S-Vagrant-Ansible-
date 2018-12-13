@@ -1,19 +1,19 @@
 ---
 - hostname: master
-  box: centos/7
-  ip_address: 192.168.10.100
+  box: ubuntu/xenial64
+  ip_address: 192.168.1.100
   cpus: 2
   ram: 1024
   playbook: k8s-master.yml
 - hostname: minion-1
-  box: centos/7
-  ip_address: 192.168.10.101
+  box: ubuntu/xenial64
+  ip_address: 192.168.1.101
   cpus: 1
   ram: 1024
   playbook: k8s-minion.yml
 - hostname: minion-2
-  box: centos/7
-  ip_address: 192.168.10.102
+  box: ubuntu/xenial64
+  ip_address: 192.168.1.102
   cpus: 1
   ram: 1024
   playbook: k8s-minion.yml
