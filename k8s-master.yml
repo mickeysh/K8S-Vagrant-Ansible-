@@ -7,7 +7,7 @@
         file: vars.yml
 
     - name: K8S | Install Master | Initialize K8S with kubeadm
-      shell: kubeadm init --token={{ kubeadm_token }} --apiserver-advertise-address={{ k8s_master_ip }} --pod-network-cidr=192.168.0.0/16
+      shell: kubeadm init --token={{ kubeadm_token }} --apiserver-advertise-address={{ k8s_master_ip }} --pod-network-cidr=10.10.0.0/16
       become: true
       become_method: sudo
 
